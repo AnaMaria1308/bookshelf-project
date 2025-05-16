@@ -1,0 +1,194 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --light-bg: #f9f9f9;
+  --text-color: #34495e;
+  --danger-color: #e74c3c;
+  --danger-hover: #c0392b;
+  --border-radius: 12px;
+}
+
+.bookTitle {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-top: 2rem;
+  color: var(--secondary-color);
+}
+
+.bookGrid {
+  margin: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.bookCard {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: var(--text-color);
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin: 0.2rem 0;
+    color: #555;
+
+    strong {
+      color: #222;
+    }
+  }
+}
+
+.cover {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.controls {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 2rem 1.5rem 1rem;
+  flex-wrap: nowrap;
+
+  .searchInput {
+    flex-grow: 1;
+    max-width: 350px;
+    border-radius: 20px;
+    padding: 5px;
+  }
+
+  .sortSelect {
+    min-width: 200px;
+    padding: 5px;
+    border-radius: 20px;
+
+    &:hover {
+      background-color: var(--light-bg);
+    }
+  }
+
+  .filterButton {
+    min-width: 60px;
+    padding: 5px;
+    border-radius: 15px;
+
+    &:hover {
+      background-color: var(--light-bg);
+    }
+  }
+
+}
+
+.filterPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100%;
+  background-color: var(--light-bg);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem 1.5rem 1.5rem; 
+  z-index: 1000;
+  transform: translateX(0%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 2.5rem;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 20px;
+  width: 28px;
+  height: 28px;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+
+/* Filter form inside the panel */
+.filterForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+
+    select,
+    input {
+      margin-top: 5px;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background-color: #fff;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: var(--primary-color);
+        outline: none;
+      }
+    }
+  }
+
+  button {
+    padding: 10px 16px;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--danger-hover);
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .bookGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sortFilterGroup,
+  .searchInput {
+    width: 100%;
+  }
+}

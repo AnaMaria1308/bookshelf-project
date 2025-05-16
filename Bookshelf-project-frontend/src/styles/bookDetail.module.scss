@@ -1,0 +1,76 @@
+.bookDetail {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+    p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      color: #555;
+  
+      strong {
+        color: #222;
+      }
+    }
+  }
+  
+  .coverLarge {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .button {
+    min-width: 140px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .deleteButton {
+    @extend .button;
+    background-color: #e53935;
+    color: #fff;
+  
+    &:hover {
+      background-color: #c62828;
+    }
+  }
+  
+  .editButton {
+    @extend .button;
+    background-color: #1976d2;
+    color: #fff;
+  
+    &:hover {
+      background-color: #1565c0;
+    }
+  }
+  
