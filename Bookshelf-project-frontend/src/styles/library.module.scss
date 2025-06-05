@@ -22,6 +22,39 @@
   gap: 2rem;
 }
 
+.emptyState {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 1px dashed #ccc;
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #357abd;
+    }
+  }
+}
+
 .bookCard {
   background-color: #fff;
   border-radius: var(--border-radius);
@@ -97,7 +130,6 @@
       background-color: var(--light-bg);
     }
   }
-
 }
 
 .filterPanel {
@@ -108,7 +140,7 @@
   height: 100%;
   background-color: var(--light-bg);
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem 1.5rem 1.5rem 1.5rem; 
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
   z-index: 1000;
   transform: translateX(0%);
   transition: transform 0.3s ease;
@@ -129,7 +161,6 @@
     color: var(--primary-color);
   }
 }
-
 
 /* Filter form inside the panel */
 .filterForm {

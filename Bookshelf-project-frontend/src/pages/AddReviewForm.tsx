@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/reviewList.module.scss";
+import api from "../api";
 
 interface Book {
   id: number;
@@ -14,9 +15,13 @@ export default function AddReviewForm() {
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
 
+  const storedUser = localStorage.getItem("user");
+  const currentUserId = storedUser ? JSON.parse(storedUser) : null;
+
   useEffect(() => {
-    fetch("http://localhost:3000/books")
-      .then((res) => res.json())
+    api
+      .get("http://localhost:3000/books")
+      .then((res) => res.data)
       .then(setBooks)
       .catch((err) => console.error("Error fetching books:", err));
   }, []);
@@ -28,25 +33,24 @@ export default function AddReviewForm() {
       alert("Please select a book");
       return;
     }
+
     if (!comment.trim()) {
       alert("Please enter a comment");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:3000/reviews", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          book_id: selectedBookId,
-          comment: comment.trim(),
-        }),
+      await api.post("/reviews", {
+        book_id: selectedBookId,
+        comment: comment.trim(),
+        user_id: currentUserId,
       });
 
-      if (!response.ok) throw new Error("Failed to create review");
-
+      console.log(currentUserId);
       navigate("/reviews");
     } catch (error) {
+      console.log(currentUserId);
+
       console.error(error);
       alert("Error saving the review");
     }
